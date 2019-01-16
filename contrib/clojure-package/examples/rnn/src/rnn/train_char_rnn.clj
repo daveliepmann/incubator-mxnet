@@ -40,23 +40,23 @@
 
 ;; batch size for training
 (def batch-size 32)
+
 ;; we can support various length input
 ;; for this problem, we cut each input sentence to length of 129
-;; so we only need a fixed lenght bucket
+;; so we only need a fixed length bucket
 (def buckets [129])
+
 ;;hidden unit in LSTM cell
 (def num-hidden 512)
+
 ;; embedding dim which is map a char to a 256 dim vector
 (def num-embed 256)
+
 ;; number of lstm layer
 (def num-lstm-layer 3)
-;; we will show a quick demo in 2 epoch and we will see the result
-;; by training 75 epoch
-(def num-epoch 75)
+
 ;; learning rate
 (def learning-rate 0.01)
-;; we will use pure sgd without momentum
-(def momentum 0.0)
 
 (def ctx (context/cpu)) ;; change to gpu if desired
 (def data-path "data/obama.txt")

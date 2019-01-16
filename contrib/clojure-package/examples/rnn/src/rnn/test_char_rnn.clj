@@ -29,7 +29,6 @@
   (do (println "Retrieving data...") (sh "./get_data.sh")))
 
 (def data-path "data/obama.txt")
-(def model-prefix)
 (def start-sentence "The joke ")
 (def num-hidden 512) ;; hidden unit in LSTM cell
 (def num-embed 256) ;; the embedding dim (a char is mapped to 256 dim)
@@ -40,7 +39,7 @@
 (defn rnn-test [model-prefix epoch-num seq-length random?]
   (let [trained-mod (m/load-checkpoint {:prefix model-prefix :epoch epoch-num})
         trained-arg-params (m/arg-params trained-mod)
-        model (lstm/lstm-inference-model {:num-lstm-layer 3
+        model (lstm/lstm-inference-model {:num-lstm-layer num-lstm-layer
                                           :input-size (inc (count vocab))
                                           :num-label (inc (count vocab))
                                           :num-hidden num-hidden
